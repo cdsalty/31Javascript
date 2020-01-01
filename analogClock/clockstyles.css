@@ -42,6 +42,6 @@ body {
   top: 50%;
   transform-origin: 100%; /* to pivot the hands */
   transform: rotate(90deg);
-  transition: all 0.05s;
+  /* transition: all 0.05s; */
   transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
