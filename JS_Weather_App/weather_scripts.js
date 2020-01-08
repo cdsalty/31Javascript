@@ -123,6 +123,22 @@ function renderWeeklyForecast(fcData) {
   if (rowCount > 8) {
     rowCount = 8;
   }
+  // rowCount.map(row => { })
+  for (i = 0; i < rowCount; i++) {
+    let ts = new Date(fcData.data[i].time * 1000);
+    let dayTime = wDay[ts.getDay()];
+    let summary = fcData.data[i].summary;
+    let tempHigh = `${Math.round(fcData.data[i].temperatureHigh)}&deg`;
+    let tempLow = `${Math.round(fcData.data[i].temperatureLow)}&deg`;
+
+    resultsHTML += renderRow(dayTime, summary, tempHigh, tempLow);
+  }
+  return resultsHTML;
+}
+
+// 8. render grid columns using a template literal
+function renderRow(dayTime, summary, tempHigh, colVal4) {
+  return `<tr><td>${dayTime}</td><td>${summary}</td><td>${tempHigh}</td><td>${colVal4}</td></tr>`;
 }
 
 // 1. initialize the geolocation request (need lat and long of the users location)
