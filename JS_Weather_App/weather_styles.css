@@ -10,6 +10,7 @@ body {
 }
 
 .wpBackground {
+  padding-bottom: 200px;
   max-height: 100%;
   min-height: 500px;
   background: url(images/imageOutside.jpg) no-repeat center center fixed;

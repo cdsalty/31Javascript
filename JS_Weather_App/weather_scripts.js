@@ -79,6 +79,14 @@ function fetchWeatherReport(apiKey, latitude, longitude) {
       document.getElementById('wind').innerHTML = `Winds are at ${Math.round(
         windSpeed
       )} mph`;
+
+      // render the forcast tabs (daily and weekly)
+      document.getElementById('dailyForecast').innerHTML = renderWeeklyForecast(
+        data.daily
+      );
+      document.getElementById('weeklyForecast').innerHTML = renderWeeklyForecast(
+        data.hourly
+      );
     })
     .catch((err) => {
       throw `Sorry we had an error that occured, error: ${err}`;
@@ -103,6 +111,18 @@ function fetchLocation(apiKey, latitude, longitude) {
       // on first run, I received an error saying my billing to my google api wasn't enabled. This was very helpful in diagonising the error
       throw `Sorry, there was an error occured. Please refer to ${err}`;
     });
+}
+
+// 7. Render the Weekly Forecast: Keep in mind it will be placed inside a table:
+function renderWeeklyForecast(fcData) {
+  // return an html layout to go within the table
+  let resultsHTML = `<tr><th>Day:</th><th>Conditions:</th><th>High:</th><th>Low:</th></tr>`;
+  // next, need to loop over the data and get the rows that I need.
+  // also need to get a row count... on return, it will actually show more days than we need so we modify it to work accordingly
+  rowCount = fcData.data.length;
+  if (rowCount > 8) {
+    rowCount = 8;
+  }
 }
 
 // 1. initialize the geolocation request (need lat and long of the users location)
