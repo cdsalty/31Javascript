@@ -1,0 +1,24 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: rgba(0, 0, 255, 0.468); */
+  background-color: #795eff;
+  min-height: 100vh;
+}
+
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 400px;
+  /* take the height, double your margin's and you get 20 which will make 20 squares across as rows, and 25 on each column */
+}
+
+.square {
+  margin: 2px;
+  width: 16px;
+  height: 16px;
+  /* background-color: #e4ff5e; */
+  background-color: #f0fabd;
+}
