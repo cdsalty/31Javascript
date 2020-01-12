@@ -16,9 +16,14 @@ body {
 }
 
 .square {
-  margin: 2px;
-  width: 16px;
-  height: 16px;
-  /* background-color: #e4ff5e; */
   background-color: #f0fabd;
+  box-shadow: 0 0 2px black;
+  margin: 2px;
+  height: 16px;
+  width: 16px;
+  transition: 2s ease;
+}
+
+.square:hover {
+  transition-duration: 0s;
 }

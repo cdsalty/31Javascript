@@ -45,6 +45,13 @@ function setColorToElement(element) {
   const color = getRandomColor();
   // take the color randomly selected above and assign it to an element's background color
   element.style.background = color;
+  element.style.boxShadow = `0 0 2 ${color}, 0 0 10px ${color}`;
+}
+
+// 6. Need to remove the color from the element
+function removeColorFromElement(element) {
+  element.style.background = '#f0fabd';
+  element.style.boxShadow = `0 0 2 ${color}, 0 0 10px ${color}`;
 }
 
 // 5c. create a function to GET a RANDOM color

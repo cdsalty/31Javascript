@@ -6,14 +6,16 @@ const container = document.getElementById('container');
 const numOfSquares = 500;
 
 const blockColors = [
-  '#795eff',
   '#ffa45e',
   '008080',
   '#95ff5e',
   '#f86576',
   '#8366f4',
   '#e9967a',
-  '#aba2bd'
+  '#aba2bd',
+  '#60221f',
+  '#fcfcfc',
+  'yellow'
 ];
 
 // 3. Loop through the squares (i < numOfSquares)
@@ -35,6 +37,12 @@ for (let i = 0; i < numOfSquares; i++) {
 function setColorToElement(element) {
   const color = getRandomColor();
   element.style.background = color;
+  element.style.boxShadow = `0 0 2px ${color}, 0 0 10px ${color}`;
+}
+
+function removeColorFromElement(element) {
+  element.style.background = '#f0fabd';
+  element.style.boxShadow = `0 0 2px #000`;
 }
 
 function getRandomColor() {
