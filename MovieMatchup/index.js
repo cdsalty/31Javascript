@@ -10,30 +10,39 @@ const fetchData = async (searchTerm) => {
     }
   });
   // console.log(response);
-  console.log(response.data); // the search input being returned. VERY IMPORTANT!!!
+  console.log(response.data); // the search input being returned. I omited this by mistake and nothing would return.
 };
 
 // fetchData();
 
-// 2. Start on autocomplete search
+// 2. Autocomplete search using DEBOUNCE
 const input = document.querySelector('input');
 
-let timeoutId; // defined but no value
-
 // function for user's search input
+const debounce = (func) => {
+  let timeoutId; // each setTimeout duration...
+  return (...args) => {
+    // return all arguements such as arg1, arg2, etc. the same thing...
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    timeoutId = setTimeout(() => {
+      func.apply(null, args); // each iteration will have a new value
+    }, 800);
+  };
+};
+
 const onInput = (e) => {
-  // will be called several times.
-  // on first search...
-  if (timeoutId) {
-    // won't be defined until the second iteration
-    // check to see if timeoutId is defined; the first time it won't be so it will be skipped
-    // on the user's SECOND search input, the timeoutId will be defined.
-    clearTimeout(timeoutId);
-    // when it's called stopped, the new timeoutId will have a new value below and then repeat the pattern
-  }
+  fetchData(e.target.value);
+};
+
+input.addEventListener('input', debounce(onInput));
+/* 
+delaying the user's search input in order to make less calls to the api
+- the key to making this start is by assigning a varaible to the setTimeout function so we can control
+  when it's called. 
+
   timeoutId = setTimeout(() => {
     fetchData(e.target.value);
   }, 1000);
-};
-
-input.addEventListener('input', onInput);
+*/
