@@ -50,3 +50,8 @@ figure .image img {
 /* 
 BULMA.CSS: https://bulma.io/documentation/layout/hero/
 */
+
+/* TEMPORARY */
+.margin {
+  margin-bottom: 35px;
+}

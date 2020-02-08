@@ -6,26 +6,48 @@ const fetchData = async (searchTerm) => {
       s: searchTerm
     }
   });
-
+  if (response.data.Error) {
+    // not actual error but an error thrown due to the way the api was designed
+    return []; // no movies to show, return empty array
+  }
   // console.log(response.data); // inside this, I can see I need to be inside Search... let's return it.
   return response.data.Search;
 };
 
-// 2. Start on autocomplete search by using the DEBOUNCE APPROACH: I did not know this previously
+const root = document.querySelector('.autocomplete');
+root.innerHTML = `
+  <label><b>Search for a Movie</b></label>
+  <input class = "input" />
+  <div class = "dropdown">
+    <div class = "dropdown-menu"> 
+      <div class = "dropdown-content results"></div>
+    </div>
+  </div>
+  `;
+// attaching to the classes being created above
 const input = document.querySelector('input');
+const dropdown = document.querySelector('.dropdown');
+const resultsWrapper = document.querySelector('.results'); // will hold the results returned
 
 const onInput = async (e) => {
-  // fetchData(e.target.value); ---> remember fetchdata is called with async so see below.
+  // fetchData(e.target.value); ---> remember fetchdata is called with async so follow it up with await.
   const movies = await fetchData(e.target.value);
   // console.log(movies);
+  dropdown.classList.add('is-active'); // adding 'is-active' to a class already created.
   for (let movie of movies) {
     // first, create the div to hold the content
-    const div = document.createElement('div');
-    div.innerHTML = `
+    // const div = document.createElement('div');
+    const option = document.createElement('a');
+
+    //from bulma below
+    option.classList.add('dropdown-item');
+    option.innerHTML = `
       <img src = "${movie.Poster}" />
-      <h2>${movie.Title}</h2>
-    `;
-    document.querySelector('#target').appendChild(div);
+      <h4>${movie.Title}</h4>
+    `; // margin class is temporary
+
+    // document.querySelector('#target').appendChild(option);
+    resultsWrapper.appendChild(option);
   }
 };
 input.addEventListener('input', debounce(onInput, 800));
