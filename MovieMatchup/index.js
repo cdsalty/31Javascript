@@ -15,8 +15,17 @@ const fetchData = async (searchTerm) => {
 const input = document.querySelector('input');
 
 const onInput = async (e) => {
-  // fetchData(e.target.value); ---> remember fetchdata is called with async so it needs to be addressed here too
+  // fetchData(e.target.value); ---> remember fetchdata is called with async so see below.
   const movies = await fetchData(e.target.value);
-  console.log(movies);
+  // console.log(movies);
+  for (let movie of movies) {
+    // first, create the div to hold the content
+    const div = document.createElement('div');
+    div.innerHTML = `
+      <img src = "${movie.Poster}" />
+      <h2>${movie.Title}</h2>
+    `;
+    document.querySelector('#target').appendChild(div);
+  }
 };
 input.addEventListener('input', debounce(onInput, 800));

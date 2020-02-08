@@ -3,8 +3,8 @@
 // 2. Start on autocomplete search by using the DEBOUNCE APPROACH: I did not know this previously
 const input = document.querySelector('input');
 
-const onInput = (event) => {
-  fetchData(event.target.value);
+const onInput = (e) => {
+  fetchData(e.target.value);
 };
 input.addEventListener('input', debounce(onInput, 800));
 
