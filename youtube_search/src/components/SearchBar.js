@@ -1,19 +1,28 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class SearchBar extends Component {
-  constructor() {
-    super();
-    this.state = {term: ''};
-  }
+class SearchBar extends React.Component {
+  state = {term: ''};
+
+  onInputChange = (e) => {
+    this.setState({term: e.target.value});
+    console.log(e.target.value);
+  };
+
+  onFormSubmit = (e) => {
+    e.preventDefault(); // prevent the page from refreshing on enter
+
+    // TODO: Call callback from parent component, App.js
+  };
+
   render() {
     return (
       <div className="search-bar ui segment">
-        <div className="ui form">
+        <form onSubmit={this.onFormSubmit} className="ui form">
           <div className="field">
             <label>Video Search</label>
-            <input type="text" value={this.state.term} />
+            <input type="text" value={this.state.term} onChange={this.onInputChange} />
           </div>
-        </div>
+        </form>
       </div>
     );
   }
