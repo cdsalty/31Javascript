@@ -24,7 +24,7 @@ root.innerHTML = `
     </div>
   </div>
   `;
-// attaching to the classes being created above
+// creating a link to the classes being rendered above
 const input = document.querySelector('input');
 const dropdown = document.querySelector('.dropdown');
 const resultsWrapper = document.querySelector('.results'); // will hold the results returned
@@ -32,17 +32,20 @@ const resultsWrapper = document.querySelector('.results'); // will hold the resu
 const onInput = async (e) => {
   // fetchData(e.target.value); ---> remember fetchdata is called with async so follow it up with await.
   const movies = await fetchData(e.target.value);
+  resultsWrapper.innerHTML = ''; // by doing this, the search value will reset after initial search
   // console.log(movies);
   dropdown.classList.add('is-active'); // adding 'is-active' to a class already created.
   for (let movie of movies) {
     // first, create the div to hold the content
     // const div = document.createElement('div');
     const option = document.createElement('a');
+    // IF results don't include an image, they return N/A. So IF N/A, then return nothing, ' '
+    const imgSrc = movie.Poster === 'N/A' ? '' : movie.Poster; // if no poster, ?THEN? display nothing :else: postr
 
     //from bulma below
     option.classList.add('dropdown-item');
     option.innerHTML = `
-      <img src = "${movie.Poster}" />
+      <img src = "${imgSrc}" />
       <h4>${movie.Title}</h4>
     `; // margin class is temporary
 
