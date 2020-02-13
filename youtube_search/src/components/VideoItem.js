@@ -1,13 +1,14 @@
 import React from 'react';
 
 const VideoItem = (props) => {
+  console.log(props);
   return (
     <div>
+      <h4>{props.video.snippet.title}</h4>
       <img
-        src={props.video.snippet.thumbnails.snippet.medium.url}
+        src={props.video.snippet.thumbnails.default.url}
         alt={props.video.snippet.title}
       />
-      <h4>{props.video.snippet.title}</h4>
     </div>
   );
 };
