@@ -2,9 +2,8 @@ import React from 'react';
 import VideoItem from './VideoItem';
 
 const VideoList = (props) => {
-  // return <div>{props.videos.length}</div>;
   const renderedList = props.videos.map((video) => {
-    return <VideoItem />; // this will create a new array of videoItem components for each movie
+    return <VideoItem video={video} />; // this will create a new array of videoItem components for each movie
   });
   return <div>{renderedList}</div>; // returning 5 VideoItems.
 };
@@ -20,4 +19,11 @@ Video List: will hold and return VideoItems
 
 - Once I knew the props passed down were the videos array, all that's left to do is map through the videos and 
 return a VideoItem for each one. 
+
+VideoItem
+- assigning a property of value and setting it equal to video. 
+  - Video in this instance will represent the current video that's being mapped over.
+
+** to refer back to the video object being returned, complete a search and in the console, under preview, select the link it's returning.
+
 */
