@@ -1,9 +1,11 @@
+import './VideoItem.css';
 import React from 'react';
 
 const VideoItem = (props) => {
   // console.log(props);
   return (
-    <div className="item">
+    // ** Need to make note to practice naming the root div of each component, the actual name of the component for referncing.
+    <div className="item video-itm">
       <img
         className="ui image"
         src={props.video.snippet.thumbnails.default.url}
