@@ -5,7 +5,7 @@ import VideoItem from './VideoItem';
 const VideoList = (props) => {
   const renderedList = props.videos.map((video) => {
     // create component that will represent each video object returned.
-    return <VideoItem video={video} />; // this will create a new array of videoItem components for each movie
+    return <VideoItem onVideoSelect={props.onVideoSelect} video={video} />; // this will create a new array of videoItem components for each movie
   });
 
   return <div className="ui relaxed divided list">{renderedList}</div>; // the div is holding/returning 5 VideoItems.

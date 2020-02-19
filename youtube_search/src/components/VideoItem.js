@@ -1,14 +1,17 @@
 import './VideoItem.css';
 import React from 'react';
 
+// const VideoItem = ({ video, onVideoSelect }) => {
 const VideoItem = (props) => {
-  // console.log(props);
+  console.log(props.video.snippet);
   return (
     // ** Need to make note to practice naming the root div of each component, the actual name of the component for referncing.
-    <div className="item video-itm">
+    // the onClick event is allowing the app to pass data BACK UP TO THE PARENT APP COMPONENT.
+    <div onClick={() => props.onVideoSelect(props.video)} className="item video-itm">
       <img
         className="ui image"
-        src={props.video.snippet.thumbnails.default.url}
+        // src={props.video.snippet.thumbnails.default.url}
+        src={props.video.snippet.thumbnails.medium.url}
         alt={props.video.snippet.title}
       />
       <div className="content">
