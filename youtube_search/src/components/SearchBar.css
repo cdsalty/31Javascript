@@ -1,0 +1,4 @@
+.ui.segment:first-child {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
