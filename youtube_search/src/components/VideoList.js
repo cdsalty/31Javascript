@@ -5,7 +5,13 @@ import VideoItem from './VideoItem';
 const VideoList = (props) => {
   const renderedList = props.videos.map((video) => {
     // create component that will represent each video object returned.
-    return <VideoItem onVideoSelect={props.onVideoSelect} video={video} />; // this will create a new array of videoItem components for each movie
+    return (
+      <VideoItem
+        key={video.id.videoId}
+        onVideoSelect={props.onVideoSelect}
+        video={video}
+      />
+    ); // this will create a new array of videoItem components for each movie
   });
 
   return <div className="ui relaxed divided list">{renderedList}</div>; // the div is holding/returning 5 VideoItems.
@@ -14,4 +20,5 @@ const VideoList = (props) => {
 export default VideoList;
 
 // VideoList Component will git the className of ui reladed divided list
-// VideoItem will git the item className
+// VideoItem will get the item className
+// The array needs to provide a unique key; doing this inside the VideoItem component.
