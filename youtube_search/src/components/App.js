@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBar from './SearchBar';
 import VideoList from './VideoList';
+import VideoDetail from './VideoDetail';
 import youtube from '../apis/youtube'; // in order to make the axios request in onTermSubmit
 
 class App extends React.Component {
@@ -21,7 +22,8 @@ class App extends React.Component {
 
   // since this is a callback, defining as an arrow function?
   onVideoSelect = (video) => {
-    console.log('coming from inside the App component;', video);
+    // console.log('coming from inside the App component;', video);
+    this.setState({selectedVideo: video});
   };
 
   render() {
@@ -30,6 +32,7 @@ class App extends React.Component {
       // in order to know what to render on the screen. videos will the prop that will be rendered out in VideoList
       <div className="ui container">
         <SearchBar onFormSubmit={this.onTermSubmit} />
+        <VideoDetail video={this.state.selectedVideo} />
         <VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos} />
       </div>
     );
