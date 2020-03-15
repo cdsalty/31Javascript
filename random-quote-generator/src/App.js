@@ -32,7 +32,7 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state.quotes); // CONFIRMING DATA BEING SETUP
+    // console.log(this.state.quotes); // CONFIRMING DATA BEING SETUP
     return (
       <div className="App" id="quote-box">
         <Button handleClick={this.handleNextClick} buttonDisplayName="Next Quote" />
